@@ -75,7 +75,7 @@ namespace DoppelgangstersOnline
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins(new[] { "http://localhost:3000", "http://172.28.112.1:3000", "https://localhost:44334" })
+                    builder.WithOrigins(new[] { "http://localhost:3000", "http://localhost:44334", "http://172.28.112.1:3000", "http://172.28.112.1:44334" })
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
@@ -88,7 +88,6 @@ namespace DoppelgangstersOnline
             services.AddSingleton<IDictionary<string, Player>>(opts => new Dictionary<string, Player>());
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext context)
         {
             if (env.IsDevelopment())
@@ -98,7 +97,7 @@ namespace DoppelgangstersOnline
             }
 
             app.UseCors(options => options
-                .WithOrigins(new[] { "http://localhost:3000", "http://172.28.112.1:3000", "https://localhost:44334" })
+                .WithOrigins(new[] { "http://localhost:3000", "http://localhost:44334", "http://172.28.112.1:3000", "http://172.28.112.1:44334" })
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
@@ -116,20 +115,20 @@ namespace DoppelgangstersOnline
                 endpoints.MapDefaultControllerRoute();
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    //spa.UseReactDevelopmentServer(npmScript: "start");
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-                }
-                else
-                {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        //spa.UseReactDevelopmentServer(npmScript: "start");
+            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            //    }
+            //    else
+            //    {
+            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            //    }
+            //});
 
             
         }

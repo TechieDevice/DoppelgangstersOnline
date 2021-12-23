@@ -41,5 +41,5 @@ C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Debu
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Debug\net5.0\DoppelgangstersOnline.pdb
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Debug\net5.0\DoppelgangstersOnline.genruntimeconfig.cache
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
-C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Debug\net5.0\DoppelgangstersOnline.csproj.AssemblyReference.cache
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Debug\net5.0\DoppelgangstersOnline.csproj.AssemblyReference.cache

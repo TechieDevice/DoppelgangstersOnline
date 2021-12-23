@@ -23,12 +23,12 @@ export default class HomePage extends React.Component {
                 this.setState({ errorText: "User is unauthorized" });
                 break;
             default:
-                this.setState({ errorText: "" });
+                //this.setState({ errorText: "" });
                 break;
         }
         const token = sessionStorage.getItem("accessToken");
         const NickName = sessionStorage.getItem("NickName");
-        if ((token !== null) || (NickName !== null)) {
+        if ((token === null) || (NickName === null)) {
             return (
                 <div className="flexing"
                     style={{ margin: '1%', marginTop: '6%', marginBottom: '10%', backgroundColor: 'gray', borderColor: '#020008' }}>

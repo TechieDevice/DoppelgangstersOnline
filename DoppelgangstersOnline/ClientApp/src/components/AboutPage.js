@@ -14,7 +14,7 @@ export default class AboutPage extends React.Component {
 
     getData = () => {
         const Page = "About";
-        const response = fetch('https://localhost:44334/api/content', {
+        const response = fetch('https://172.28.112.1:44334/api/content', {
             method: "GET",
             headers: { "Accept": 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -22,13 +22,14 @@ export default class AboutPage extends React.Component {
             })
         });
 
-        return data = response.body;
+        const data = response.body;
+        return data;
     }
 
-    componentWillMount() {
-        var data = this.getData();
-        this.setState({ data: data });
-    }
+    //componentWillMount() {
+    //    var data = this.getData();
+    //    this.setState({ data: data });
+    //}
 
     render() {
         return (

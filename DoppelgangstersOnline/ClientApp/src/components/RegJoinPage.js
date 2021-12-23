@@ -13,8 +13,7 @@ export default class RegJoinPage extends React.Component {
 
     switch = () => {
         if (this.state.regLog === "login") {
-            this.setState({ regLog: "register", text: "Alreagy have an account? Login"});
-            
+            this.setState({ regLog: "register", text: "Alreagy have an account? Login"});           
         }
         else {
             this.setState({ regLog: "login", text: "Don't have an account? Register" });
@@ -23,11 +22,8 @@ export default class RegJoinPage extends React.Component {
 
     submit = async () => {
         try {
-            const formData = new FormData();
             const NickName = this.state.nickName;
             const Password = this.state.pass;
-            formData.append("NickName", this.state.nickName);
-            formData.append("Password", this.state.pass);
 
             if (this.state.regLog === "login") {
                 const response = await fetch('https://localhost:44334/api/user/login', {
