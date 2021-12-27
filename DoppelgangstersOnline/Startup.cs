@@ -22,14 +22,12 @@ namespace DoppelgangstersOnline
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
             services.AddSingleton<Settings>();
-            var connection = Settings.GetConnectionString();
+            var connection = Environment.GetEnvironmentVariable("DefaultConnection");
 
             services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 27))));
 
@@ -64,18 +62,18 @@ namespace DoppelgangstersOnline
                 };
             });
 
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "wwwroot";
+            //});
 
             services.AddSignalR();
 
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(builder =>
+                options.AddPolicy("CorsPolicy", builder =>
                 {
-                    builder.WithOrigins(new[] { "http://localhost:3000", "http://localhost:44334", "http://172.28.112.1:3000", "http://172.28.112.1:44334" })
+                    builder.WithOrigins(new[] { "http://192.168.43.20:3000", "http://192.168.43.20:5000" })
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
@@ -96,14 +94,9 @@ namespace DoppelgangstersOnline
                 context.Database.Migrate();
             }
 
-            app.UseCors(options => options
-                .WithOrigins(new[] { "http://localhost:3000", "http://localhost:44334", "http://172.28.112.1:3000", "http://172.28.112.1:44334" })
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()
-            );
+            app.UseCors("CorsPolicy");
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -121,16 +114,14 @@ namespace DoppelgangstersOnline
 
             //    if (env.IsDevelopment())
             //    {
-            //        //spa.UseReactDevelopmentServer(npmScript: "start");
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
             //        spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
             //    }
             //    else
             //    {
-            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
             //    }
             //});
-
-            
         }
     }
 }

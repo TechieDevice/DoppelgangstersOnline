@@ -39,9 +39,6 @@ export default class Menu extends React.Component {
                                 <NavItem >
                                     <NavLink tag={Link} className="text-light" to="/roles"><h5 className="font-face-gm">Roles &nbsp;</h5></NavLink>
                                 </NavItem>
-                                <NavItem >
-                                    <NavLink onClick={this.getData} tag={Link} className="text-light" to="/about"><h5 className="font-face-gm">About &nbsp;&nbsp;</h5></NavLink>
-                                </NavItem>
                                 <NavItem>
                                     <Button outline
                                         className="btn btn-outline-light"

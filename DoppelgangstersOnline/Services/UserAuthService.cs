@@ -18,11 +18,24 @@ namespace DoppelgangstersOnline.Services
     {
         private ApplicationContext _context;
         private readonly IConfiguration _appSettings;
+        private readonly IDictionary<string, Player> _clients;
 
-        public UserAuthService(ApplicationContext context, IConfiguration conf)
+        public UserAuthService(ApplicationContext context, IConfiguration conf, IDictionary<string, Player> clients)
         {
             _context = context;
             _appSettings = conf;
+            _clients = clients;
+        }
+
+        public IEnumerable<GetUsersDto> GetUsers()
+        {
+            var clients = _clients.ToArray();
+            return Enumerable.Range(0, clients.Length).Select(index => new GetUsersDto
+            {
+                NickName = clients[index].Value.NickName,
+                Room = clients[index].Value.RoomId
+            })
+            .ToArray();
         }
 
         public string GetJwtToken(UserDto user)
@@ -31,7 +44,7 @@ namespace DoppelgangstersOnline.Services
             var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.NickName),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
             var identity = new ClaimsIdentity(claims, "Token",
                                     ClaimsIdentity.DefaultNameClaimType,
@@ -52,6 +65,7 @@ namespace DoppelgangstersOnline.Services
         public async Task<UserDto> GetUser(string username, string password)
         {
             var user = new UserDto();
+            var userM = new User();
 
             var login = _appSettings.GetSection("AdminLogin").GetSection("l").Value;
             var pass = _appSettings.GetSection("AdminLogin").GetSection("p").Value;
@@ -61,15 +75,19 @@ namespace DoppelgangstersOnline.Services
                 user = new UserDto
                 {
                     Id = 0,
-                    NickName = login, 
+                    NickName = login,
                     Password = string.Empty,
                     Role = "Admin"
                 };
             }
-            else user = ToDto(await _context.Users.FirstOrDefaultAsync(x => x.NickName == username && x.Password == password));
+            else
+            {
+                userM = await _context.Users.FirstOrDefaultAsync(x => x.NickName == username && x.Password == password);
+                if (userM == null) return null;
+                user = ToDto(userM);
+            }
 
             if (user == null) return null;
-
             return user;
         }
 
@@ -82,16 +100,6 @@ namespace DoppelgangstersOnline.Services
             await _context.SaveChangesAsync();
 
             return userDto;
-        }
-
-        public async Task<List<UserDto>> GetUsers()
-        {
-            var result = await _context.Users
-                .AsNoTracking()
-                .Select(cp => ToDto(cp))
-                .ToListAsync();
-
-            return result;
         }
 
         private User ToModel(UserDto userDto)

@@ -1,6 +1,7 @@
 ﻿using DoppelgangstersOnline.Dtos;
 using DoppelgangstersOnline.Services;
 using DoppelgangstersOnline.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,13 @@ namespace DoppelgangstersOnline.Controllers
             };
 
             return Json(response);
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
+        public IEnumerable<GetUsersDto> Get()
+        {
+            return _userService.GetUsers();
         }
     }
 }

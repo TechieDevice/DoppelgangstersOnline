@@ -45,16 +45,11 @@ export default class HomePage extends React.Component {
                     <Form.Group>
                         <div className="flexing">
                             <Form.Control style={{ margin: '1%', marginTop: '6%', width: '30%' }}
-                                placeholder='NickName'
-                                onChange={e => this.setState({ name: e.target.value })} />
-                        </div>
-                        <div className="flexing">
-                            <Form.Control style={{ margin: '1%', width: '30%' }}
                                 placeholder='room code'
                                 onChange={e => this.setState({ room: e.target.value })} />
                         </div>
                         <div className="flexing">
-                            <h5 style={{ color: 'red' }} size='small'>{this.props.error}</h5>
+                            <h5 style={{ color: 'red' }} size='small'>{this.state.errorText}</h5>
                         </div>
                     </Form.Group>
                     <Form.Group>

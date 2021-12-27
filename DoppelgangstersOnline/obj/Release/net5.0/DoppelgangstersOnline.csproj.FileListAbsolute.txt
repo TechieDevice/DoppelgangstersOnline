@@ -42,3 +42,4 @@ C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Rele
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Release\net5.0\ref\DoppelgangstersOnline.dll
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Release\net5.0\DoppelgangstersOnline.pdb
 C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Release\net5.0\DoppelgangstersOnline.genruntimeconfig.cache
+C:\Users\aveng\source\repos\DoppelgangstersOnline\DoppelgangstersOnline\obj\Release\net5.0\DoppelgangstersOnline.csproj.AssemblyReference.cache

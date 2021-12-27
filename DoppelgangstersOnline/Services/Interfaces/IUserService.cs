@@ -13,5 +13,7 @@ namespace DoppelgangstersOnline.Services.Interfaces
         Task<UserDto> GetUser(string username, string password);
 
         string GetJwtToken(UserDto user);
+
+        IEnumerable<GetUsersDto> GetUsers();
     }
 }

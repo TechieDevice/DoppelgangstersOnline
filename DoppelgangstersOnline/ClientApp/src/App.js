@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
+import UsersOnlinePage from './components/UsersOnlinePage';
 import RolesPage from './components/RolesPage';
 import RegJoinPage from './components/RegJoinPage';
 import Menu from './components/Menu';
@@ -27,7 +27,7 @@ export default class App extends React.Component {
             const token = sessionStorage.getItem("accessToken");
 
             const connection = new HubConnectionBuilder()
-                .withUrl("https://localhost:44334/api/game", { accessTokenFactory: () => token })
+                .withUrl("http://localhost:5000/api/game", { accessTokenFactory: () => token })
                 .configureLogging(LogLevel.Information)
                 .build();
 
@@ -112,8 +112,8 @@ export default class App extends React.Component {
                                     <Route path='/roles'>
                                         <RolesPage />
                                     </Route>
-                                    <Route path='/about'>
-                                        <AboutPage />
+                                    <Route path='/users-online'>
+                                        <UsersOnlinePage />
                                     </Route>
                                     <Route path='/reg-join'> 
                                         <RegJoinPage />

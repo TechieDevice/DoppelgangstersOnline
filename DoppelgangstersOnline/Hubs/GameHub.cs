@@ -12,13 +12,11 @@ namespace DoppelgangstersOnline.Hubs
     [Authorize]
     public class GameHub : Hub
     {
-        private readonly string _botUser;
         private readonly IDictionary<string, Room> _rooms;
         private readonly IDictionary<string, Player> _clients;
 
         public GameHub(IDictionary<string, Room> rooms, IDictionary<string, Player> clients)
         {
-            _botUser = "Game";
             _rooms = rooms;
             _clients = clients;
         }
@@ -34,6 +32,7 @@ namespace DoppelgangstersOnline.Hubs
                     {
                         _rooms.Remove(room.RoomId);
                     }
+                    _clients.Remove(Context.ConnectionId);
                 }
             }
             return base.OnDisconnectedAsync(exception);
