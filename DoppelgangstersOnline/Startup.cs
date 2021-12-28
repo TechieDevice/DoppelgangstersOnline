@@ -27,7 +27,7 @@ namespace DoppelgangstersOnline
             services.AddMvc();
 
             services.AddSingleton<Settings>();
-            var connection = Environment.GetEnvironmentVariable("DefaultConnection");
+            var connection = "server=192.168.1.102;user=root;password=secret_pass;database=doppeldb;port=3306;";
 
             services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 27))));
 
@@ -73,7 +73,7 @@ namespace DoppelgangstersOnline
             {
                 options.AddPolicy("CorsPolicy", builder =>
                 {
-                    builder.WithOrigins(new[] { "http://192.168.43.20:3000", "http://192.168.43.20:5000" })
+                    builder.WithOrigins(new[] { "http://192.168.1.102:3000", "http://192.168.1.102:5000" })
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();

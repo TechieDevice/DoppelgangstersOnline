@@ -27,7 +27,7 @@ export default class App extends React.Component {
             const token = sessionStorage.getItem("accessToken");
 
             const connection = new HubConnectionBuilder()
-                .withUrl("http://localhost:5000/api/game", { accessTokenFactory: () => token })
+                .withUrl("http://192.168.1.102:5000/api/game", { accessTokenFactory: () => token })
                 .configureLogging(LogLevel.Information)
                 .build();
 

@@ -48,7 +48,7 @@ export default class UsersOnlinePage extends React.Component {
 
     async populateUsersData() {
         const token = sessionStorage.getItem("accessToken");
-        const response = await fetch('http://localhost:5000/api/user', {
+        const response = await fetch('http://192.168.1.102:5000/api/user', {
             method: "GET", headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ export default class RegJoinPage extends React.Component {
             const Password = this.state.pass;
 
             if (this.state.regLog === "login") {
-                const response = await fetch('http://localhost:5000/api/user/login', {
+                const response = await fetch('http://192.168.1.102:5000/api/user/login', {
                     method: "POST",
                     headers: { "Accept": 'application/json', 'Content-Type': 'application/json' },
                     credentials: 'include',
@@ -48,7 +48,7 @@ export default class RegJoinPage extends React.Component {
                 }
             }
             else {
-                await fetch('http://localhost:5000/api/user/register', {
+                await fetch('http://192.168.1.102:5000/api/user/register', {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
