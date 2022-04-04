@@ -1,0 +1,101 @@
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+body {
+    background-image: url(components/misc/background.jpg);
+    background-attachment: fixed;
+    background-position: top center;
+}
+
+.mid {
+    background: rgba(0,0,0, 0.5);
+}
+
+.flexing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app {
+    margin: auto;
+    padding-top: 40px;
+    width: 950px;
+    text-align: center;
+}
+
+.lobby {
+    width: 400px;
+    margin: auto;
+}
+
+.chat {
+    display: grid;
+}
+
+.leave-room {
+    text-align: right;
+}
+
+.user-list {
+    float: left;
+    background-color: #313131;
+    color: white;
+    width: 400px;
+    height: 640px;
+    margin-right: 4px;
+}
+
+.message-container {
+    height: 600px;
+    background-color: dimgray;
+    overflow: auto;
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+
+.user-message {
+    text-align: right;
+    padding-right: 5px;
+    font-size: 18px;
+    color: white;
+}
+
+.message {
+    display: inline-flex;
+    margin: 0px auto 0px auto;
+    padding: 5px;
+    font-size: 18px;
+    color: white;
+    border-radius: 20px;
+    margin-top: 3px;
+    background-color: #020008;
+}
+
+.bot-message {
+    display: inline-flex;
+    margin: 0px auto 0px auto;
+    padding: 5px;
+    font-size: 18px;
+    color: red;
+    border-radius: 20px;
+    margin-top: 3px;
+    background-color: #020008;
+}
+
+.from-user {
+    font-size: 15px;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
